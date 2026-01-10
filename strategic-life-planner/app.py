@@ -22,7 +22,7 @@ st.set_page_config(
 )
 
 # Apply custom CSS
-apply_custom_css()
+apply_spotify_theme()
 
 # Initialize database
 if not os.path.exists(DATABASE_PATH):
