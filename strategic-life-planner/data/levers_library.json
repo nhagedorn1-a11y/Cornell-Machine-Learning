@@ -1,0 +1,396 @@
+{
+  "levers": [
+    {
+      "dimension": "Career",
+      "name": "Weekly 1:1 with manager/mentor",
+      "description": "Regular check-ins with leadership for feedback and alignment",
+      "typical_frequency": "1x per week",
+      "evidence_summary": "Studies show regular manager check-ins improve performance ratings by 30% and increase promotion likelihood",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Career",
+      "name": "Attend industry events/conferences",
+      "description": "Network and stay current with industry trends",
+      "typical_frequency": "2x per month",
+      "evidence_summary": "Professionals who attend 2+ networking events monthly see 40% more career opportunities",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Career",
+      "name": "Publish LinkedIn thought leadership",
+      "description": "Share insights and build professional brand",
+      "typical_frequency": "1x per week",
+      "evidence_summary": "Regular content creators receive 5x more profile views and 3x more opportunities",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Career",
+      "name": "Skill development/learning",
+      "description": "Dedicate time to learning new professional skills",
+      "typical_frequency": "1 hour daily",
+      "evidence_summary": "Daily learning habits correlate with 25% faster career advancement",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Career",
+      "name": "Internal networking coffee chats",
+      "description": "Build relationships across the organization",
+      "typical_frequency": "3x per month",
+      "evidence_summary": "Cross-functional relationships increase promotion likelihood by 35%",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Career",
+      "name": "Document and share wins",
+      "description": "Maintain brag document and share achievements",
+      "typical_frequency": "Weekly",
+      "evidence_summary": "Self-advocacy increases visibility and is linked to 28% higher performance reviews",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Career",
+      "name": "Seek and implement feedback",
+      "description": "Actively request and act on constructive feedback",
+      "typical_frequency": "Bi-weekly",
+      "evidence_summary": "Feedback-seeking behavior correlates with 23% faster skill development",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Health",
+      "name": "Cardiovascular exercise",
+      "description": "Running, cycling, swimming, or other cardio activities",
+      "typical_frequency": "4x per week, 30 min",
+      "evidence_summary": "Regular cardio reduces all-cause mortality by 30% and improves cognitive function",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Health",
+      "name": "Strength training",
+      "description": "Resistance exercises for muscle building and bone health",
+      "typical_frequency": "3x per week",
+      "evidence_summary": "Strength training reduces injury risk by 33% and increases metabolic rate",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Health",
+      "name": "Quality sleep (7-8 hours)",
+      "description": "Consistent sleep schedule with adequate duration",
+      "typical_frequency": "Nightly",
+      "evidence_summary": "7-8 hours of sleep improves productivity by 20% and reduces disease risk significantly",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Health",
+      "name": "Meditation/mindfulness practice",
+      "description": "Daily mindfulness or meditation sessions",
+      "typical_frequency": "10-20 min daily",
+      "evidence_summary": "Regular meditation reduces stress by 32% and improves focus and emotional regulation",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Health",
+      "name": "Therapy/counseling sessions",
+      "description": "Professional mental health support",
+      "typical_frequency": "2x per month",
+      "evidence_summary": "Regular therapy reduces anxiety/depression symptoms by 50% on average",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Health",
+      "name": "High-protein diet (100g+ daily)",
+      "description": "Adequate protein intake for muscle maintenance and satiety",
+      "typical_frequency": "Daily",
+      "evidence_summary": "High protein intake supports muscle retention and increases satiety by 25%",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Health",
+      "name": "Hydration (8+ glasses water)",
+      "description": "Consistent water intake throughout the day",
+      "typical_frequency": "Daily",
+      "evidence_summary": "Proper hydration improves cognitive performance by 15% and physical performance by 10%",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Health",
+      "name": "Meal prep and planning",
+      "description": "Prepare healthy meals in advance",
+      "typical_frequency": "Weekly",
+      "evidence_summary": "Meal planning reduces unhealthy eating by 40% and saves 5+ hours per week",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Health",
+      "name": "Walking/movement breaks",
+      "description": "Regular movement throughout the day",
+      "typical_frequency": "Every 2 hours",
+      "evidence_summary": "Movement breaks improve productivity by 15% and reduce sedentary health risks",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Health",
+      "name": "Limit alcohol consumption",
+      "description": "Moderate or eliminate alcohol intake",
+      "typical_frequency": "2 drinks or less per week",
+      "evidence_summary": "Limiting alcohol improves sleep quality by 35% and reduces disease risk",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Finance",
+      "name": "Weekly expense review",
+      "description": "Review and categorize all spending",
+      "typical_frequency": "Weekly",
+      "evidence_summary": "Weekly expense tracking reduces unnecessary spending by 20-25%",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Finance",
+      "name": "Automated savings (20% of income)",
+      "description": "Automatic transfer to savings/investment accounts",
+      "typical_frequency": "Monthly",
+      "evidence_summary": "Automated savings increases savings rate by 40% compared to manual saving",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Finance",
+      "name": "Index fund investing",
+      "description": "Regular contributions to diversified index funds",
+      "typical_frequency": "Monthly",
+      "evidence_summary": "Consistent index fund investing averages 10% annual returns over 20+ years",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Finance",
+      "name": "Financial education (books/podcasts)",
+      "description": "Continuous learning about personal finance",
+      "typical_frequency": "1 book/course per quarter",
+      "evidence_summary": "Financial literacy correlates with 30% higher wealth accumulation",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Finance",
+      "name": "Net worth tracking",
+      "description": "Calculate and track total assets minus liabilities",
+      "typical_frequency": "Monthly",
+      "evidence_summary": "Net worth tracking increases wealth building by 25% through awareness",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Finance",
+      "name": "Maximize tax-advantaged accounts",
+      "description": "Max out 401k, IRA, HSA contributions",
+      "typical_frequency": "Annual planning",
+      "evidence_summary": "Tax-advantaged investing can save 20-30% in taxes and compound wealth faster",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Finance",
+      "name": "Review and negotiate bills",
+      "description": "Regularly review subscriptions and negotiate rates",
+      "typical_frequency": "Quarterly",
+      "evidence_summary": "Negotiating bills saves average household $1,200-2,000 annually",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Finance",
+      "name": "Build emergency fund (6 months)",
+      "description": "Maintain liquid savings for emergencies",
+      "typical_frequency": "Ongoing until target met",
+      "evidence_summary": "Emergency funds reduce financial stress by 60% and prevent debt cycles",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Weekly date night with partner",
+      "description": "Dedicated quality time with romantic partner",
+      "typical_frequency": "1x per week",
+      "evidence_summary": "Weekly date nights increase relationship satisfaction by 40% and reduce divorce risk",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Regular family calls/visits",
+      "description": "Stay connected with extended family",
+      "typical_frequency": "2x per week",
+      "evidence_summary": "Regular family connection correlates with 25% higher life satisfaction",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Quality time with children",
+      "description": "Undivided attention and engagement with kids",
+      "typical_frequency": "30-60 min daily",
+      "evidence_summary": "Daily quality time improves child development outcomes and parent-child bonding",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Friend hangouts/social time",
+      "description": "Maintain friendships through regular connection",
+      "typical_frequency": "2x per month",
+      "evidence_summary": "Strong friendships increase lifespan by 50% and reduce depression risk",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Acts of service/kindness",
+      "description": "Small gestures of care for loved ones",
+      "typical_frequency": "Daily",
+      "evidence_summary": "Daily acts of kindness increase relationship satisfaction by 30%",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Active listening practice",
+      "description": "Fully present, non-judgmental listening",
+      "typical_frequency": "Daily",
+      "evidence_summary": "Active listening reduces conflicts by 35% and increases intimacy",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Express gratitude and appreciation",
+      "description": "Regularly acknowledge and thank others",
+      "typical_frequency": "Daily",
+      "evidence_summary": "Gratitude expressions increase relationship quality by 20% and personal happiness",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Relationships",
+      "name": "Couples therapy/check-ins",
+      "description": "Proactive relationship maintenance",
+      "typical_frequency": "Monthly",
+      "evidence_summary": "Preventive couples therapy reduces conflict by 40% and strengthens bonds",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Daily reading habit",
+      "description": "Read books, articles, or educational content",
+      "typical_frequency": "30-60 min daily",
+      "evidence_summary": "Daily reading for 30 min correlates with 20% higher career success and cognitive health",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Journaling/reflection",
+      "description": "Written reflection on experiences and growth",
+      "typical_frequency": "10-15 min daily",
+      "evidence_summary": "Daily journaling reduces anxiety by 25% and increases self-awareness",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Language learning",
+      "description": "Study a new language consistently",
+      "typical_frequency": "20-30 min daily",
+      "evidence_summary": "Language learning improves cognitive flexibility and delays dementia by 4-5 years",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Creative hobby practice",
+      "description": "Music, art, writing, or other creative pursuits",
+      "typical_frequency": "3-5 hours per week",
+      "evidence_summary": "Creative hobbies reduce stress by 30% and increase life satisfaction",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Online courses/workshops",
+      "description": "Structured learning programs",
+      "typical_frequency": "1 per quarter",
+      "evidence_summary": "Continuous learning correlates with 35% higher adaptability and career resilience",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Podcast/audiobook learning",
+      "description": "Learning during commute or exercise",
+      "typical_frequency": "3-5x per week",
+      "evidence_summary": "Leveraging 'dead time' for learning adds 200+ hours of education annually",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Practice public speaking",
+      "description": "Toastmasters, presentations, or speaking practice",
+      "typical_frequency": "2x per month",
+      "evidence_summary": "Public speaking practice increases confidence by 40% and career opportunities",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Personal Growth",
+      "name": "Goal review and planning",
+      "description": "Regular review of progress toward goals",
+      "typical_frequency": "Weekly",
+      "evidence_summary": "Weekly goal review increases achievement rate by 42% compared to no review",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Impact",
+      "name": "Regular volunteering",
+      "description": "Contribute time to community organizations",
+      "typical_frequency": "4-8 hours per month",
+      "evidence_summary": "Volunteering increases life satisfaction by 20% and reduces depression",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Impact",
+      "name": "Mentor others",
+      "description": "Provide guidance and support to others",
+      "typical_frequency": "1-2 mentees ongoing",
+      "evidence_summary": "Mentoring benefits mentors' career growth and increases meaning by 35%",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Impact",
+      "name": "Charitable giving",
+      "description": "Regular donations to causes you care about",
+      "typical_frequency": "Monthly or quarterly",
+      "evidence_summary": "Regular giving increases happiness more than one-time donations",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Impact",
+      "name": "Community involvement/leadership",
+      "description": "Participate in local community initiatives",
+      "typical_frequency": "2-4 hours per month",
+      "evidence_summary": "Community engagement correlates with 30% higher life satisfaction and purpose",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Impact",
+      "name": "Environmental action",
+      "description": "Reduce carbon footprint, sustainable practices",
+      "typical_frequency": "Ongoing habits",
+      "evidence_summary": "Pro-environmental behavior increases sense of purpose by 25%",
+      "difficulty_level": 2
+    },
+    {
+      "dimension": "Impact",
+      "name": "Share knowledge/teach",
+      "description": "Write blog posts, create content, teach workshops",
+      "typical_frequency": "2x per month",
+      "evidence_summary": "Teaching reinforces learning and creates legacy, increasing fulfillment",
+      "difficulty_level": 3
+    },
+    {
+      "dimension": "Impact",
+      "name": "Random acts of kindness",
+      "description": "Unexpected help or generosity toward strangers",
+      "typical_frequency": "Weekly",
+      "evidence_summary": "Acts of kindness boost happiness more than self-focused activities",
+      "difficulty_level": 1
+    },
+    {
+      "dimension": "Impact",
+      "name": "Support social causes",
+      "description": "Advocate for issues you care about",
+      "typical_frequency": "Ongoing",
+      "evidence_summary": "Activism and advocacy increase sense of purpose and agency",
+      "difficulty_level": 2
+    }
+  ]
+}
