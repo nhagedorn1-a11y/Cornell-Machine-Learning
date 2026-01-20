@@ -72,6 +72,7 @@ class SupplyChainOptimizer:
         """Load historical sales data"""
         print(f"Loading sales data from {filepath}...")
         self.sales_data = self.sales_loader.load_from_csv(filepath)
+        # Data is already set in loader by load_from_csv
         print(f"✅ Loaded {len(self.sales_data)} sales records")
         return self.sales_data
 
@@ -139,6 +140,7 @@ class SupplyChainOptimizer:
                         })
 
         self.sales_data = pd.DataFrame(sales_records)
+        self.sales_loader.data = self.sales_data  # Set loader data
 
         # Generate inventory data
         inventory_records = []
@@ -163,6 +165,7 @@ class SupplyChainOptimizer:
                 })
 
         self.inventory_data = pd.DataFrame(inventory_records)
+        self.inventory_loader.data = self.inventory_data  # Set loader data
 
         # Generate weather data
         self.weather_data = self.weather_api.get_historical_weather(
@@ -171,6 +174,7 @@ class SupplyChainOptimizer:
             start_date=start_date,
             end_date=end_date
         )
+        self.weather_loader.data = self.weather_data  # Set loader data
 
         print(f"✅ Generated sample data:")
         print(f"   - {len(self.sales_data)} sales records")
@@ -347,12 +351,17 @@ class SupplyChainOptimizer:
         """
         print(f"\n📈 Projecting inventory levels for {horizon_days} days...")
 
-        if self.demand_forecast is None:
+        if self.demand_forecast is None or len(self.demand_forecast) == 0:
             print("   No demand forecast available. Generating forecast first...")
             self.forecast_demand(horizon_days=horizon_days)
 
         if self.inventory_data is None:
             raise ValueError("Inventory data not loaded")
+
+        # Check if forecast is valid
+        if self.demand_forecast is None or len(self.demand_forecast) == 0:
+            print("   ⚠️ Unable to generate demand forecast. Using simple projection instead.")
+            return pd.DataFrame()
 
         projections = []
 

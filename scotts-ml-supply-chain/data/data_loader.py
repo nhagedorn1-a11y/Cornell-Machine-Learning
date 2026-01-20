@@ -277,12 +277,22 @@ class DataIntegrator:
         sales_df[on_date] = pd.to_datetime(sales_df[on_date])
         weather_df[on_date] = pd.to_datetime(weather_df[on_date])
 
-        # Merge
-        merged = sales_df.merge(
-            weather_df,
-            on=[on_date, on_location],
-            how='left'
-        )
+        # Check if location column exists in both dataframes
+        if on_location in sales_df.columns and on_location in weather_df.columns:
+            # Merge on date and location
+            merged = sales_df.merge(
+                weather_df,
+                on=[on_date, on_location],
+                how='left'
+            )
+        else:
+            # Merge on date only (for mock/generic weather data)
+            weather_df_date_only = weather_df.drop(columns=[on_location], errors='ignore')
+            merged = sales_df.merge(
+                weather_df_date_only,
+                on=on_date,
+                how='left'
+            )
 
         return merged
 

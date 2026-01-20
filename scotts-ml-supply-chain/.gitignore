@@ -1,0 +1,41 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Demo output
+demo_output/
+api_output/
+output/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files
+*.pkl
+*.joblib
+*.h5
+
+# Data files (exclude from git)
+*.csv
+*.xlsx
+*.json
+!requirements.txt
+!package.json
+
+# Logs
+*.log
