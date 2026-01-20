@@ -1,0 +1,176 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   SCOTTS ML SUPPLY CHAIN OPTIMIZER                         ║
+║                         QUICK REFERENCE CARD                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─ RUN DEMO ─────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  cd /home/user/Cornell-Machine-Learning/scotts-ml-supply-chain             │
+│  python3 examples/simple_demo.py                                           │
+│                                                                             │
+│  ⏱️  Runtime: ~10 seconds                                                   │
+│  📁 Output: demo_output/*.csv                                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ VIEW RESULTS ─────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  ls -lh demo_output/                    # List files                       │
+│  head demo_output/demand_forecast.csv   # Preview forecast                 │
+│  cat demo_output/inventory_policies.csv # View policies                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ OUTPUT FILES ─────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  1. demand_forecast.csv (7 KB)         30-day demand predictions           │
+│  2. inventory_policies.csv (1 KB)      Safety stock, reorder points        │
+│  3. inventory_status.csv (214 B)       Current inventory health            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ KEY METRICS ──────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Avg Daily Demand:    6.2 units/day    (from historical data)             │
+│  Safety Stock:        19 units          (95% service level)                │
+│  Reorder Point:       63 units          (when to order)                    │
+│  Order Quantity:      302 units         (Economic Order Qty)               │
+│  Days of Supply:      29 days           (how long inventory lasts)         │
+│  Annual Cost:         $1,605/product    (minimized total cost)             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ SEASONAL PATTERNS ────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🌱 Spring (Mar-May):   15,248 units    2.0x baseline (peak planting)      │
+│  ☀️  Summer (Jun-Aug):   10,965 units    1.5x baseline (maintenance)       │
+│  🍂 Fall (Sep-Oct):      8,473 units    1.2x baseline (fall planting)     │
+│  ❄️  Winter (Nov-Feb):    4,039 units    0.6x baseline (off-season)        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ COMMODITY REQUIREMENTS ───────────────────────────────────────────────────┐
+│                                                                             │
+│  For next 30 days:                                                         │
+│                                                                             │
+│  Nitrogen:         160 kg  @  $0.50/kg  =  $80.21   🟢 LOW                │
+│  Phosphorus:       107 kg  @  $0.75/kg  =  $80.21   🟢 LOW                │
+│  Potassium:         86 kg  @  $0.60/kg  =  $51.34   🟢 LOW                │
+│  Organic Matter:   214 kg  @  $0.30/kg  =  $64.17   🟢 LOW                │
+│                                          ─────────                         │
+│                                Total:    $275.93                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ DOCUMENTATION ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  START_HERE.md              ⭐ Start here! Quick overview                  │
+│  STEP_BY_STEP.md            📚 Detailed walkthrough                        │
+│  INSTALLATION_COMPLETE.md   ✅ Setup verification                          │
+│  SUMMARY.txt                📄 Complete summary                            │
+│  QUICK_REFERENCE.txt        📋 This file                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ PYTHON CHECK ─────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  python3 --version              # Check Python (should be 3.11.14)         │
+│  pip3 list | grep pandas        # Check packages                           │
+│                                                                             │
+│  Quick test:                                                               │
+│  python3 -c "import numpy, pandas, sklearn; print('✅ OK')"               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ CUSTOMIZATION ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Edit: examples/simple_demo.py                                             │
+│                                                                             │
+│  Line 27:  num_stores, num_products       # Scale up/down                  │
+│  Line 48:  service_level=0.98             # 98% vs 95%                     │
+│  Line 74:  range(90)                      # 90 days vs 30                  │
+│  Line 103: commodity prices               # Adjust pricing                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ LOAD YOUR DATA ───────────────────────────────────────────────────────────┐
+│                                                                             │
+│  from supply_chain_optimizer import SupplyChainOptimizer                   │
+│                                                                             │
+│  optimizer = SupplyChainOptimizer()                                        │
+│  optimizer.load_sales_data('your_sales.csv')                               │
+│  optimizer.load_inventory_data('your_inventory.csv')                       │
+│                                                                             │
+│  forecast = optimizer.forecast_demand(horizon_days=90)                     │
+│  policies = optimizer.optimize_inventory(service_level=0.95)               │
+│  orders = optimizer.plan_commodity_orders()                                │
+│                                                                             │
+│  optimizer.export_results('./results')                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ START API SERVER ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  python3 api/app.py                                                        │
+│                                                                             │
+│  Then visit: http://localhost:8000/docs                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ TROUBLESHOOTING ──────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Problem: "python3: command not found"                                     │
+│  Fix: Try 'python' instead of 'python3'                                    │
+│                                                                             │
+│  Problem: "No module named 'pandas'"                                       │
+│  Fix: pip install pandas numpy scikit-learn scipy joblib                   │
+│                                                                             │
+│  Problem: Demo takes too long                                              │
+│  Fix: Reduce num_stores and num_products in simple_demo.py                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ HEALTH INDICATORS ────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🟢 Healthy:   >14 days supply    No action needed                         │
+│  🟡 Monitor:   7-14 days supply   Plan reorder soon                        │
+│  🔴 Critical:  <7 days supply     Order immediately                        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ KEY FORMULAS ─────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Safety Stock = Z × σ × √LT                                                │
+│    Z = Z-score (1.65 for 95%)                                              │
+│    σ = Standard deviation of demand                                        │
+│    LT = Lead time                                                          │
+│                                                                             │
+│  Reorder Point = (Avg Daily Demand × Lead Time) + Safety Stock             │
+│                                                                             │
+│  EOQ = √((2 × Annual Demand × Ordering Cost) / Holding Cost)               │
+│                                                                             │
+│  Days of Supply = On-Hand Inventory / Avg Daily Demand                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ SYSTEM STATUS ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Status:        ✅ Fully Operational                                       │
+│  Python:        3.11.14                                                    │
+│  Dependencies:  All installed                                              │
+│  Demo:          Working (10 sec runtime)                                   │
+│  Output:        3 CSV files generated                                      │
+│  Location:      /home/user/Cornell-Machine-Learning/scotts-ml-supply-chain│
+│  Branch:        claude/ml-commodity-ordering-xnRRS                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║  🎉 READY TO USE! Everything installed and working perfectly! 🎉          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Quick Start Command:
+cd /home/user/Cornell-Machine-Learning/scotts-ml-supply-chain && python3 examples/simple_demo.py
+
+Last Updated: 2026-01-20
+Version: 1.0.0
