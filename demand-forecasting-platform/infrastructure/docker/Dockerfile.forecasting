@@ -1,0 +1,26 @@
+# Dockerfile for Forecasting ML Service
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy and install requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY ml_pipeline/ /app/ml_pipeline/
+COPY services/forecasting_service/ /app/services/forecasting_service/
+COPY shared/ /app/shared/
+COPY configs/ /app/configs/
+
+# Create non-root user
+RUN useradd -m -u 1000 mluser && chown -R mluser:mluser /app
+USER mluser
+
+CMD ["python", "-m", "services.forecasting_service.main"]
