@@ -1,0 +1,193 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║          WINDOWS INSTALLATION CHECKLIST - Follow These Steps                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Your Error:
+  "pip : The term 'pip' is not recognized"
+
+This Means:
+  Python is NOT installed yet
+
+─────────────────────────────────────────────────────────────────────────────
+
+📋 STEP-BY-STEP CHECKLIST:
+
+□ STEP 1: Install Python (5 minutes)
+
+  Option A - Microsoft Store (EASIEST):
+    1. Press Windows Key
+    2. Type: "store"
+    3. Click Microsoft Store
+    4. Search: "Python 3.11"
+    5. Click "Get" or "Install"
+    6. Wait 2-3 minutes
+
+  Option B - Python.org:
+    1. Go to: https://www.python.org/downloads/
+    2. Click "Download Python 3.11"
+    3. Run installer
+    4. ☑️ CHECK "Add Python to PATH" (IMPORTANT!)
+    5. Click "Install Now"
+
+□ STEP 2: Close PowerShell (Important!)
+
+    - Close ALL PowerShell windows
+    - Open a NEW PowerShell
+    - (Windows needs to reload settings)
+
+□ STEP 3: Verify Python Works
+
+    In NEW PowerShell, type:
+
+    python --version
+
+    You should see:
+    Python 3.11.7
+
+    ✅ If yes → Continue to Step 4
+    ❌ If no → Reopen PowerShell and try again
+
+□ STEP 4: Install Packages (2 minutes)
+
+    pip install numpy pandas scikit-learn scipy joblib
+
+    Wait 2-3 minutes for download/install
+
+□ STEP 5: Verify Packages Work
+
+    python -c "import numpy, pandas, sklearn; print('Success!')"
+
+    You should see:
+    Success!
+
+    ✅ If yes → Continue to Step 6
+    ❌ If no → Try: python -m pip install numpy pandas scikit-learn scipy joblib
+
+□ STEP 6: Navigate to Project
+
+    cd C:\Users\Nick\Cornell-Machine-Learning\scotts-ml-supply-chain
+
+    (Adjust path if your project is elsewhere)
+
+□ STEP 7: Run the Demo
+
+    python examples\simple_demo.py
+
+    Should complete in 10 seconds with output
+
+□ STEP 8: Check Output Files
+
+    dir demo_output
+
+    You should see:
+    - demand_forecast.csv
+    - inventory_policies.csv
+    - inventory_status.csv
+
+✅ DONE! The system is working!
+
+─────────────────────────────────────────────────────────────────────────────
+
+🆘 IF SOMETHING FAILS:
+
+Problem: "python: command not found" after Step 3
+Fix: Close PowerShell completely. Open NEW PowerShell. Try again.
+
+Problem: "pip: command not found" but python works
+Fix: Use this instead: python -m pip install numpy pandas scikit-learn scipy joblib
+
+Problem: Microsoft Store doesn't work
+Fix: Use Option B (Python.org)
+
+Problem: Still getting errors
+Run this diagnostic:
+  python --version
+  pip --version
+  where python
+
+Share the output so we can debug!
+
+─────────────────────────────────────────────────────────────────────────────
+
+⏱️ TIME ESTIMATE:
+
+  Install Python:        5 minutes
+  Install Packages:      2 minutes
+  Run Demo:             10 seconds
+  ───────────────────────────────
+  Total:                ~7 minutes
+
+─────────────────────────────────────────────────────────────────────────────
+
+📂 FILES TO READ AFTER INSTALLATION:
+
+  WINDOWS_INSTALL_NOW.md  → Detailed installation guide
+  START_HERE.md           → What the system does
+  HOW_IT_WORKS.md         → Data in, actions out
+  VALUE_SUMMARY.txt       → ROI and value proposition
+  OTHER_USE_CASES.md      → Similar product categories
+
+─────────────────────────────────────────────────────────────────────────────
+
+🎯 YOUR EXACT SITUATION:
+
+  You tried:     pip install ...
+  You got:       "pip is not recognized"
+  You need:      Install Python first!
+  Next step:     Do STEP 1 above (Microsoft Store)
+  Then:          Do STEP 2-8 in order
+  Result:        Working demo in 7 minutes
+
+─────────────────────────────────────────────────────────────────────────────
+
+✅ VERIFICATION COMMANDS (After Installation):
+
+  # All of these should work:
+  python --version           # Shows Python 3.11.x
+  pip --version             # Shows pip 24.x
+  where python              # Shows install location
+  python examples\simple_demo.py  # Runs demo successfully
+
+─────────────────────────────────────────────────────────────────────────────
+
+🎉 WHAT YOU GET WHEN IT WORKS:
+
+  3 CSV files with specific guidance:
+
+  1. demand_forecast.csv
+     → 30-day predictions per product
+
+  2. inventory_policies.csv
+     → Safety stock, reorder points
+
+  3. inventory_status.csv
+     → Current health of each product
+
+  Plus actionable recommendations like:
+  "Temperature going up → Order 2,450 kg urea by March 18"
+  "Ship 3,410 units to Atlanta DC by March 28"
+
+─────────────────────────────────────────────────────────────────────────────
+
+💡 QUICK TIP:
+
+  Start with Microsoft Store installation (STEP 1 Option A)
+
+  It's the easiest and handles PATH automatically.
+
+  Only use Python.org if Store doesn't work.
+
+─────────────────────────────────────────────────────────────────────────────
+
+📧 BOTTOM LINE:
+
+  Current Status:    Python NOT installed
+  Your Next Action:  Install Python from Microsoft Store
+  Time Needed:       5 minutes to install + 2 minutes packages
+  Then You Can:      Run demo and get supply chain insights
+
+  Start with STEP 1 above! 👆
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  Once Python is installed, everything else is automatic! 🚀                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
