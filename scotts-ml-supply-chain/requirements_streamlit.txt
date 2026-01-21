@@ -1,0 +1,27 @@
+# Streamlit Dashboard Requirements
+# Install with: pip install -r requirements_streamlit.txt
+
+# Core ML & Data
+numpy>=2.4.0
+pandas>=2.3.0
+scikit-learn>=1.8.0
+scipy>=1.17.0
+joblib>=1.5.0
+
+# Streamlit & Visualization
+streamlit>=1.31.0
+plotly>=5.18.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# AI Integration (Optional - install if using AI features)
+openai>=1.12.0  # For GPT-4 integration
+anthropic>=0.18.0  # For Claude integration
+
+# Utilities
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Optional: For production deployment
+gunicorn>=21.2.0  # For deploying to cloud
+watchdog>=3.0.0  # For file watching in development
