@@ -750,9 +750,19 @@ elif page == "📊 Analytics":
         weather_data['Demand'] = weather_data['Demand'] + weather_data['Temperature'] * 0.5
 
         fig = px.scatter(weather_data, x='Temperature', y='Demand',
-                         trendline='ols',
                          title='Temperature vs Demand Correlation',
                          labels={'Temperature': 'Temperature (°F)', 'Demand': 'Daily Demand (units)'})
+
+        # Add manual trendline (without statsmodels dependency)
+        z = np.polyfit(weather_data['Temperature'], weather_data['Demand'], 1)
+        p = np.poly1d(z)
+        fig.add_trace(go.Scatter(
+            x=weather_data['Temperature'],
+            y=p(weather_data['Temperature']),
+            mode='lines',
+            name='Trend Line',
+            line=dict(color='#ff7f0e', width=2, dash='dash')
+        ))
         fig.update_layout(template='plotly_dark', height=400)
         st.plotly_chart(fig, use_container_width=True)
 
