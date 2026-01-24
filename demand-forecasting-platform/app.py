@@ -10,6 +10,19 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime, timedelta
 import numpy as np
+import os
+import sys
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# Import API connectors
+try:
+    from services.data_connectors import get_weather_api, get_economic_api
+    APIS_AVAILABLE = True
+except ImportError:
+    APIS_AVAILABLE = False
+    print("Warning: API connectors not available. Using mock data.")
 
 # Page configuration
 st.set_page_config(
@@ -742,23 +755,62 @@ elif page == "📊 Analytics":
     with tab4:
         st.markdown('<div class="section-header"><h2>Weather Impact on Demand</h2></div>', unsafe_allow_html=True)
 
-        # Sample weather correlation data
-        weather_data = pd.DataFrame({
-            'Temperature': np.random.normal(70, 10, 50),
-            'Demand': np.random.normal(150, 20, 50)
-        })
-        weather_data['Demand'] = weather_data['Demand'] + weather_data['Temperature'] * 0.5
+        # Try to get real weather data
+        weather_api = get_weather_api() if APIS_AVAILABLE else None
 
-        fig = px.scatter(weather_data, x='Temperature', y='Demand',
+        if weather_api:
+            try:
+                # Get weather for selected location
+                location_map = {
+                    'DC-ATL': 'Atlanta',
+                    'DC-CHI': 'Chicago',
+                    'DC-NYC': 'New York',
+                    'DC-LAX': 'Los Angeles',
+                    'DC-SEA': 'Seattle'
+                }
+                city = location_map.get(selected_location, 'Atlanta')
+
+                # Get 5-day forecast
+                forecast = weather_api.get_forecast(city, days=5)
+
+                if forecast and not forecast[0].get('_mock'):
+                    # Create DataFrame from real forecast data
+                    weather_df = pd.DataFrame(forecast)
+                    weather_df['Temperature'] = weather_df['temperature']
+                    # Simulate demand based on temperature
+                    weather_df['Demand'] = 100 + weather_df['Temperature'] * 1.5 + np.random.normal(0, 10, len(weather_df))
+
+                    st.info(f"✅ Using real weather data from OpenWeather API for {city}")
+                else:
+                    raise Exception("Mock data returned")
+
+            except Exception as e:
+                st.warning("⚠️ Using simulated weather data. Set OPENWEATHER_API_KEY in .env for real data.")
+                # Fallback to mock data
+                weather_df = pd.DataFrame({
+                    'Temperature': np.random.normal(70, 10, 50),
+                    'Demand': np.random.normal(150, 20, 50)
+                })
+                weather_df['Demand'] = weather_df['Demand'] + weather_df['Temperature'] * 0.5
+        else:
+            st.warning("⚠️ Using simulated weather data. Set OPENWEATHER_API_KEY in .env for real data.")
+            # Fallback to mock data
+            weather_df = pd.DataFrame({
+                'Temperature': np.random.normal(70, 10, 50),
+                'Demand': np.random.normal(150, 20, 50)
+            })
+            weather_df['Demand'] = weather_df['Demand'] + weather_df['Temperature'] * 0.5
+
+        fig = px.scatter(weather_df, x='Temperature', y='Demand',
                          title='Temperature vs Demand Correlation',
                          labels={'Temperature': 'Temperature (°F)', 'Demand': 'Daily Demand (units)'})
 
         # Add manual trendline (without statsmodels dependency)
-        z = np.polyfit(weather_data['Temperature'], weather_data['Demand'], 1)
+        z = np.polyfit(weather_df['Temperature'], weather_df['Demand'], 1)
         p = np.poly1d(z)
         fig.add_trace(go.Scatter(
-            x=weather_data['Temperature'],
-            y=p(weather_data['Temperature']),
+            x=weather_df['Temperature'],
+            y=p(weather_df['Temperature']),
             mode='lines',
             name='Trend Line',
             line=dict(color='#ff7f0e', width=2, dash='dash')
@@ -833,3 +885,74 @@ elif page == "⚙️ Settings":
             st.success("✅ API connection successful!")
         else:
             st.error("❌ Unable to connect to API. Check if it's running.")
+
+    st.markdown('<div class="section-header"><h2>🌐 External API Status</h2></div>', unsafe_allow_html=True)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Weather API (OpenWeather)")
+        weather_api = get_weather_api() if APIS_AVAILABLE else None
+
+        if weather_api:
+            try:
+                # Test weather API
+                test_weather = weather_api.get_current_weather("Atlanta")
+                if not test_weather.get('_mock'):
+                    st.success("✅ Connected - Receiving real weather data")
+                    st.info(f"**Current in Atlanta:** {test_weather['temperature']:.1f}°F, {test_weather['description']}")
+                else:
+                    st.warning("⚠️ API key not set - Using mock data")
+                    st.info("Set OPENWEATHER_API_KEY in .env file")
+            except Exception as e:
+                st.error(f"❌ Connection failed: {str(e)}")
+        else:
+            st.warning("⚠️ Weather API not configured")
+            st.info("**Setup instructions:**\n1. Get free key at https://openweathermap.org/api\n2. Add to .env file: `OPENWEATHER_API_KEY=your_key`\n3. Restart the app")
+
+    with col2:
+        st.subheader("Economic API (FRED)")
+        economic_api = get_economic_api() if APIS_AVAILABLE else None
+
+        if economic_api:
+            try:
+                # Test FRED API
+                test_economic = economic_api.get_unemployment_rate()
+                if not test_economic.get('_mock'):
+                    st.success("✅ Connected - Receiving real economic data")
+                    st.info(f"**Unemployment Rate:** {test_economic['latest_value']:.1f}% (as of {test_economic['latest_date']})")
+                else:
+                    st.warning("⚠️ API key not set - Using mock data")
+                    st.info("Set FRED_API_KEY in .env file")
+            except Exception as e:
+                st.error(f"❌ Connection failed: {str(e)}")
+        else:
+            st.warning("⚠️ Economic API not configured")
+            st.info("**Setup instructions:**\n1. Get free key at https://fred.stlouisfed.org/docs/api/api_key.html\n2. Add to .env file: `FRED_API_KEY=your_key`\n3. Restart the app")
+
+    # Show economic indicators if available
+    if economic_api:
+        st.markdown('<div class="section-header"><h2>📊 Economic Indicators Dashboard</h2></div>', unsafe_allow_html=True)
+
+        try:
+            summary = economic_api.get_dashboard_summary()
+
+            if summary:
+                cols = st.columns(len(summary))
+
+                for idx, (key, data) in enumerate(summary.items()):
+                    with cols[idx]:
+                        trend_emoji = "↑" if data['trend'] == 'up' else "↓" if data['trend'] == 'down' else "→"
+                        trend_color = "#2ca02c" if data['trend'] == 'up' else "#d62728" if data['trend'] == 'down' else "#ff7f0e"
+
+                        st.markdown(f"""
+                        <div class="metric-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <h3>{data['name']}</h3>
+                            <div class="value">{data['value']:.1f}</div>
+                            <div class="delta" style="color: {trend_color};">
+                                {trend_emoji} {data['pct_change']:+.1f}% (3mo)
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
+        except Exception as e:
+            st.warning(f"Unable to fetch economic indicators: {str(e)}")
