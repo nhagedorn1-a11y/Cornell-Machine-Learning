@@ -34,6 +34,11 @@
 
 ## Tech Stack
 
+**Frontend/UI:**
+- Streamlit (interactive web dashboard)
+- Plotly (interactive charts and visualizations)
+- Custom CSS (modern dark theme with gradients)
+
 **Backend:**
 - Python 3.11+ (FastAPI, Pydantic, SQLAlchemy)
 - PostgreSQL 15 + TimescaleDB extension
@@ -56,9 +61,50 @@
 
 ## Quick Start (Multiple Options)
 
-### 🚀 Option 1: Standalone Mode (Fastest - No Docker Required!)
+### 🎨 Option 1: Full UI Experience (Recommended!)
 
-**Perfect for Windows users or quick testing**
+**Beautiful, visually compelling dashboard with charts, metrics, and analytics**
+
+#### Windows (One-Click):
+```powershell
+# 1. Clone and navigate
+git clone <repo-url>
+cd demand-forecasting-platform
+
+# 2. Double-click start.bat
+# OR run manually:
+.\start.bat
+```
+
+#### Manual Start (All Platforms):
+```bash
+# 1. Install UI dependencies
+pip install streamlit pandas plotly requests fastapi uvicorn
+
+# 2. Start API server (Terminal 1)
+python simple_api.py
+
+# 3. Start Web UI (Terminal 2)
+streamlit run app.py
+
+# 4. Open browser to http://localhost:8501
+```
+
+**What you get:**
+- ✅ **Stunning Dashboard** - Real-time KPIs, metrics, and charts
+- ✅ **Interactive Forecasting** - 30-day predictions with confidence intervals
+- ✅ **Inventory Optimization** - AI-driven rebalancing recommendations
+- ✅ **Advanced Analytics** - Weather correlation, ROI analysis, trends
+- ✅ **Modern Dark UI** - Gradient cards, smooth animations, Plotly charts
+- ✅ **No Docker Required** - Works on Windows, Mac, Linux
+
+📖 **See [UI_QUICKSTART.md](UI_QUICKSTART.md) for detailed guide with screenshots**
+
+---
+
+### 🚀 Option 2: API Only (Backend Testing)
+
+**Just the FastAPI server without UI**
 
 ```bash
 # 1. Clone the repository
@@ -76,15 +122,14 @@ python simple_api.py
 ```
 
 **What you get:**
-- ✅ FastAPI server with interactive docs
+- ✅ FastAPI server with interactive API docs
 - ✅ Demo forecast endpoints with sample data
 - ✅ Health checks and system info
-- ✅ No database or Docker required
-- ✅ Perfect for learning and testing
+- ✅ Perfect for API testing and development
 
 ---
 
-### 🐳 Option 2: Full Stack (Docker - Production-like)
+### 🐳 Option 3: Full Stack (Docker - Production-like)
 
 **For full features including database, MLflow, and all services**
 
@@ -351,14 +396,19 @@ demand-forecasting-platform/
 │   ├── init_db.py
 │   └── generate_sample_data.py  # Creates 2 years of realistic data
 │
-├── simple_api.py             # 🆕 Standalone API (no database required!)
+├── app.py                   # 🎨 Main Streamlit UI application (multi-page dashboard)
+├── simple_api.py            # 🆕 Standalone API (no database required!)
 ├── test_api.py              # Standalone API test script
+├── start.bat                # 🪟 Windows one-click startup script
+├── start.sh                 # 🐧 Linux/Mac startup script
 ├── docker-compose.yml
-├── requirements.txt
-├── requirements-simple.txt   # Minimal dependencies for standalone mode
+├── requirements.txt         # Full stack dependencies
+├── requirements-simple.txt  # Minimal API-only dependencies
+├── requirements-ui.txt      # UI-only dependencies
 ├── .env.example
-├── QUICKSTART.md            # 5-minute setup guide
-└── README.md
+├── README.md
+├── QUICKSTART.md            # 5-minute API setup guide
+└── UI_QUICKSTART.md         # UI setup guide with screenshots
 ```
 
 ---
