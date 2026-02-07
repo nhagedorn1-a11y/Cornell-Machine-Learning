@@ -1,0 +1,24 @@
+# Local Agent MCP Framework - Pinned Dependencies
+# Core
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+pydantic==2.10.4
+
+# MCP SDK
+mcp==1.2.0
+
+# RAG / Embeddings
+faiss-cpu==1.9.0
+sentence-transformers==3.3.1
+
+# HTML / Text extraction
+beautifulsoup4==4.12.3
+readability-lxml==0.8.1
+lxml==5.3.0
+lxml_html_clean==0.4.1
+
+# Utilities
+jinja2==3.1.4
+aiofiles==24.1.0
+tenacity==9.0.0
