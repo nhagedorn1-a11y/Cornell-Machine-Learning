@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Agent MCP</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e4e4e7;
+    --text-muted: #9ca3af;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --user-bg: #1e293b;
+    --assistant-bg: #1a1d27;
+    --source-bg: #172554;
+    --debug-bg: #1c1917;
+    --error: #ef4444;
+    --success: #22c55e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+  }
+  .status-dot.ok { background: var(--success); }
+  .status-dot.error { background: var(--error); }
+
+  #status-text {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  label.toggle {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  #chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .message {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 20px;
+    border-radius: 12px;
+    line-height: 1.6;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .message.user {
+    background: var(--user-bg);
+    border: 1px solid var(--border);
+    align-self: flex-end;
+  }
+
+  .message.assistant {
+    background: var(--assistant-bg);
+    border: 1px solid var(--border);
+  }
+
+  .message .role {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .sources-list {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--source-bg);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .sources-list a {
+    color: var(--accent-hover);
+    text-decoration: none;
+  }
+  .sources-list a:hover { text-decoration: underline; }
+
+  .debug-block {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--debug-bg);
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: 'SF Mono', Menlo, monospace;
+    color: var(--text-muted);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  #input-area {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  #input-form {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+  }
+
+  #prompt-input {
+    flex: 1;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    resize: none;
+    min-height: 44px;
+    max-height: 160px;
+  }
+  #prompt-input:focus { border-color: var(--accent); }
+
+  #send-btn {
+    padding: 0 20px;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  #send-btn:hover { background: var(--accent-hover); }
+  #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .typing-indicator {
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px 0;
+  }
+  .typing-indicator span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    animation: blink 1.4s infinite both;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink {
+    0%, 80%, 100% { opacity: 0.3; }
+    40% { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Local Agent MCP</h1>
+  <div class="header-controls">
+    <div class="status-dot" id="status-dot"></div>
+    <span id="status-text">checking...</span>
+    <label class="toggle">
+      <input type="checkbox" id="debug-toggle"> Debug
+    </label>
+  </div>
+</header>
+
+<div id="chat-container"></div>
+
+<div id="input-area">
+  <form id="input-form">
+    <textarea id="prompt-input" placeholder="Ask anything... (paste URLs to ingest, or ask about recent topics)" rows="1"></textarea>
+    <button type="submit" id="send-btn">Send</button>
+  </form>
+</div>
+
+<script>
+const chatContainer = document.getElementById('chat-container');
+const form = document.getElementById('input-form');
+const input = document.getElementById('prompt-input');
+const sendBtn = document.getElementById('send-btn');
+const debugToggle = document.getElementById('debug-toggle');
+const statusDot = document.getElementById('status-dot');
+const statusText = document.getElementById('status-text');
+
+// Auto-resize textarea
+input.addEventListener('input', () => {
+  input.style.height = 'auto';
+  input.style.height = Math.min(input.scrollHeight, 160) + 'px';
+});
+
+// Enter to send (Shift+Enter for newline)
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    form.dispatchEvent(new Event('submit'));
+  }
+});
+
+function addMessage(role, content, sources, debug) {
+  const div = document.createElement('div');
+  div.className = `message ${role}`;
+
+  let html = `<div class="role">${role}</div><div class="content">${escapeHtml(content)}</div>`;
+
+  if (sources && sources.length > 0) {
+    html += '<div class="sources-list"><strong>Sources:</strong><br>';
+    sources.forEach(s => {
+      html += `${s.id} <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.title || s.url)}</a><br>`;
+    });
+    html += '</div>';
+  }
+
+  if (debug && debug.length > 0) {
+    html += `<div class="debug-block">${escapeHtml(JSON.stringify(debug, null, 2))}</div>`;
+  }
+
+  div.innerHTML = html;
+  chatContainer.appendChild(div);
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+  return div;
+}
+
+function addTypingIndicator() {
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.id = 'typing';
+  div.innerHTML = '<div class="role">assistant</div><div class="typing-indicator"><span></span><span></span><span></span></div>';
+  chatContainer.appendChild(div);
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+  return div;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const prompt = input.value.trim();
+  if (!prompt) return;
+
+  addMessage('user', prompt);
+  input.value = '';
+  input.style.height = 'auto';
+  sendBtn.disabled = true;
+
+  const typing = addTypingIndicator();
+
+  try {
+    const resp = await fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt, debug: debugToggle.checked }),
+    });
+
+    typing.remove();
+
+    if (!resp.ok) {
+      const errText = await resp.text();
+      addMessage('assistant', `Error ${resp.status}: ${errText}`);
+      return;
+    }
+
+    const data = await resp.json();
+    addMessage('assistant', data.reply, data.sources, data.debug);
+  } catch (err) {
+    typing.remove();
+    addMessage('assistant', `Network error: ${err.message}`);
+  } finally {
+    sendBtn.disabled = false;
+    input.focus();
+  }
+});
+
+// Health check on load
+async function checkHealth() {
+  try {
+    const resp = await fetch('/health');
+    const data = await resp.json();
+    const lmOk = data.lmstudio?.status === 'ok';
+    const webOk = data.mcp_web === 'ok';
+    const ragOk = data.mcp_rag === 'ok';
+
+    if (lmOk && webOk && ragOk) {
+      statusDot.className = 'status-dot ok';
+      statusText.textContent = 'all systems go';
+    } else {
+      statusDot.className = 'status-dot error';
+      const issues = [];
+      if (!lmOk) issues.push('LM Studio');
+      if (!webOk) issues.push('MCP-Web');
+      if (!ragOk) issues.push('MCP-RAG');
+      statusText.textContent = issues.join(', ') + ' offline';
+    }
+  } catch {
+    statusDot.className = 'status-dot error';
+    statusText.textContent = 'server offline';
+  }
+}
+
+checkHealth();
+setInterval(checkHealth, 30000);
+input.focus();
+</script>
+</body>
+</html>

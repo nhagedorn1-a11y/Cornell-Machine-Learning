@@ -1,0 +1,22 @@
+# Optional: Local SearXNG instance for web search
+# Usage: docker-compose up -d
+# Then set searxng.enabled=true in config.json
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: local-searxng
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/searxng:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: searxng-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
