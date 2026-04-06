@@ -1,0 +1,404 @@
+{
+  "cases": [
+    {
+      "id": "TC_001",
+      "query": "What is a leverage ratio?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Pure definitional query with no data references"
+    },
+    {
+      "id": "TC_002",
+      "query": "Explain discounted cash flow analysis",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Textbook methodology question, no entity or data references"
+    },
+    {
+      "id": "TC_003",
+      "query": "Define amortization",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Simple accounting definition, no sensitive context"
+    },
+    {
+      "id": "TC_004",
+      "query": "What is EBITDA?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Standard financial metric definition"
+    },
+    {
+      "id": "TC_005",
+      "query": "How does a waterfall distribution work in private equity?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "General PE concept explanation, no deal specifics"
+    },
+    {
+      "id": "TC_006",
+      "query": "What is the difference between enterprise value and equity value?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Comparative definition of standard valuation concepts"
+    },
+    {
+      "id": "TC_007",
+      "query": "Explain the concept of weighted average cost of capital",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "WACC is a textbook finance concept"
+    },
+    {
+      "id": "TC_008",
+      "query": "What are the main types of credit facilities?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "General credit knowledge, no specific facility referenced"
+    },
+    {
+      "id": "TC_009",
+      "query": "How do you calculate free cash flow?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Formula-based methodology question"
+    },
+    {
+      "id": "TC_010",
+      "query": "What is a cap table?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "General startup/PE terminology definition"
+    },
+    {
+      "id": "TC_011",
+      "query": "Describe the difference between a revolver and a term loan",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Generic debt instrument comparison"
+    },
+    {
+      "id": "TC_012",
+      "query": "What is net asset value?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Standard fund accounting definition"
+    },
+    {
+      "id": "TC_013",
+      "query": "Explain the Modigliani-Miller theorem",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "Academic finance theory, no practical application to specific data"
+    },
+    {
+      "id": "TC_014",
+      "query": "What are the typical covenants in a loan agreement generally?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "General educational question about covenant types, not referencing any specific agreement"
+    },
+    {
+      "id": "TC_015",
+      "query": "How does depreciation affect taxes?",
+      "expected_lane": "GREEN",
+      "expected_sensitivity_band": "NONE",
+      "expected_exposure_band": "NONE",
+      "rationale": "General tax accounting concept"
+    },
+    {
+      "id": "TC_016",
+      "query": "Analyze our Q3 revenue trends compared to Q2",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "References internal quarterly data but no specific figures or named entities"
+    },
+    {
+      "id": "TC_017",
+      "query": "Compare our gross margins to industry benchmarks for the last fiscal year",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Internal margin data combined with public benchmarks, moderate sensitivity"
+    },
+    {
+      "id": "TC_018",
+      "query": "What was our customer churn rate in the North America segment last quarter?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Segment-level operating metric, moderate sensitivity and exposure"
+    },
+    {
+      "id": "TC_019",
+      "query": "Summarize the headcount changes across departments in 2024",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Internal workforce data, not individually identifiable but operationally sensitive"
+    },
+    {
+      "id": "TC_020",
+      "query": "Show me the SaaS ARR breakdown by product line",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Internal recurring revenue segmentation, moderate commercial sensitivity"
+    },
+    {
+      "id": "TC_021",
+      "query": "What is our current debt-to-equity ratio based on the latest financials?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Derived metric from internal financial statements, not yet public"
+    },
+    {
+      "id": "TC_022",
+      "query": "Pull up the variance analysis for the marketing budget this quarter",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "LOW",
+      "expected_exposure_band": "LOW",
+      "rationale": "Internal budget data, low sensitivity but still non-public operational detail"
+    },
+    {
+      "id": "TC_023",
+      "query": "How did our APAC region perform relative to plan in FY2025?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Regional performance vs internal plan, moderate sensitivity"
+    },
+    {
+      "id": "TC_024",
+      "query": "What is the average deal size in our enterprise pipeline?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Sales pipeline aggregates are commercially sensitive but not individually identifying"
+    },
+    {
+      "id": "TC_025",
+      "query": "Provide a summary of our R&D expenditure trends over the past three years",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Multi-year internal R&D spend, strategically sensitive"
+    },
+    {
+      "id": "TC_026",
+      "query": "Show our operating expense ratio compared to the S&P 500 median",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "LOW",
+      "expected_exposure_band": "LOW",
+      "rationale": "Internal ratio benchmarked against public data, low-to-moderate sensitivity"
+    },
+    {
+      "id": "TC_027",
+      "query": "What percentage of revenue comes from our top 10 clients?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Revenue concentration data is commercially sensitive, moderate exposure"
+    },
+    {
+      "id": "TC_028",
+      "query": "Give me a forecast sensitivity table for our EBITDA under different growth scenarios",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "LOW",
+      "rationale": "Internal forecasting exercise with scenario analysis"
+    },
+    {
+      "id": "TC_029",
+      "query": "What is the projected cash runway based on current burn rate?",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "MEDIUM",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Liquidity projection, sensitive for investor relations"
+    },
+    {
+      "id": "TC_030",
+      "query": "Summarize our inventory turnover by warehouse location",
+      "expected_lane": "AMBER",
+      "expected_sensitivity_band": "LOW",
+      "expected_exposure_band": "LOW",
+      "rationale": "Operational metric at location level, low sensitivity but internal"
+    },
+    {
+      "id": "TC_031",
+      "query": "What is our covenant headroom on the $500M revolving credit facility?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Direct reference to specific credit facility amount and covenant compliance, MNPI"
+    },
+    {
+      "id": "TC_032",
+      "query": "Summarize the board minutes regarding CEO compensation from last month's meeting",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Board minutes are highly privileged; executive compensation is material non-public"
+    },
+    {
+      "id": "TC_033",
+      "query": "What are the terms of the proposed acquisition of TechCorp Inc.?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "M&A terms for a named target, clear MNPI and hard rule trigger"
+    },
+    {
+      "id": "TC_034",
+      "query": "Pull the merger model for Project Falcon including synergy assumptions",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Codename project reference with M&A model details, MNPI"
+    },
+    {
+      "id": "TC_035",
+      "query": "What did the SEC comment letter say about our revenue recognition policy?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Regulatory filing correspondence, material non-public until resolved"
+    },
+    {
+      "id": "TC_036",
+      "query": "Show me the draft 10-K before it is filed with the SEC",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Pre-filing regulatory document is definitionally MNPI"
+    },
+    {
+      "id": "TC_037",
+      "query": "Retrieve the covenant compliance certificate for Q4 submitted to the lender group",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Lender compliance certificate is restricted material under credit agreements"
+    },
+    {
+      "id": "TC_038",
+      "query": "What is the break-up fee in the definitive agreement for the Acme Holdings deal?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Specific M&A deal terms with named counterparty"
+    },
+    {
+      "id": "TC_039",
+      "query": "List all material adverse change triggers in our senior secured credit agreement",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "MAC clause details from a specific credit agreement, restricted information"
+    },
+    {
+      "id": "TC_040",
+      "query": "What is the go-shop period and have any competing bids been received?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Active M&A process details, highly sensitive MNPI"
+    },
+    {
+      "id": "TC_041",
+      "query": "Provide John Smith's total compensation including unvested equity grants",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Named individual PII combined with compensation details"
+    },
+    {
+      "id": "TC_042",
+      "query": "What is the LIBOR floor on Tranche B of our term loan?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "MEDIUM",
+      "rationale": "Specific credit facility tranche pricing terms"
+    },
+    {
+      "id": "TC_043",
+      "query": "Summarize the whistleblower complaint filed last week and the investigation status",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Active legal/compliance investigation, extremely sensitive"
+    },
+    {
+      "id": "TC_044",
+      "query": "What are the indemnification provisions in the stock purchase agreement for Project Neptune?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Codename M&A deal with specific legal provisions"
+    },
+    {
+      "id": "TC_045",
+      "query": "Pull up the insider trading pre-clearance requests for the executive team this quarter",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Insider trading compliance records, highly restricted"
+    },
+    {
+      "id": "TC_046",
+      "query": "What is the pending litigation reserve for the class action lawsuit?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Litigation reserves are privileged and material non-public"
+    },
+    {
+      "id": "TC_047",
+      "query": "Show the earnings per share figures before the earnings announcement next Tuesday",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Pre-announcement EPS is textbook MNPI"
+    },
+    {
+      "id": "TC_048",
+      "query": "What did the rating agency say in their preliminary assessment before the downgrade?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Pre-public rating agency communications are MNPI"
+    },
+    {
+      "id": "TC_049",
+      "query": "Retrieve the due diligence data room index for the Series C fundraise",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Data room contents for active fundraise, highly restricted"
+    },
+    {
+      "id": "TC_050",
+      "query": "What are the acceleration clauses if we breach the 4.5x net leverage covenant?",
+      "expected_lane": "RED",
+      "expected_sensitivity_band": "HIGH",
+      "expected_exposure_band": "HIGH",
+      "rationale": "Specific covenant threshold with acceleration consequences, restricted credit agreement terms"
+    }
+  ]
+}

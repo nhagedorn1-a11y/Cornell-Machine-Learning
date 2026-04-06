@@ -1,0 +1,8 @@
+{"rule_id": "FIN_001", "type": "ALWAYS_RED", "pattern": "\\b(EBITDA|amortization schedule)\\b", "description": "Financial metric terms"}
+{"rule_id": "FIN_002", "type": "ALWAYS_RED", "pattern": "\\b(securitization|asset[- ]backed securities)\\b", "description": "Structured finance instruments"}
+{"rule_id": "FIN_003", "type": "ALWAYS_RED", "pattern": "\\b(derivative|swap agreement|interest rate swap)\\b", "description": "Derivative instruments"}
+{"rule_id": "FIN_004", "type": "ALWAYS_RED", "pattern": "\\b(hedge fund|hedging strategy|hedge position)\\b", "description": "Hedging terminology"}
+{"rule_id": "FIN_005", "type": "ALWAYS_RED", "pattern": "\\b(credit default swap|CDS spread)\\b", "description": "Credit default instruments"}
+{"rule_id": "FIN_006", "type": "ALWAYS_RED", "pattern": "\\b(margin call|leverage ratio|debt covenant)\\b", "description": "Risk and leverage terms"}
+{"rule_id": "FIN_007", "type": "ALWAYS_RED", "pattern": "\\b(insider trading|material non[- ]public information|MNPI)\\b", "description": "Insider trading indicators"}
+{"rule_id": "FIN_008", "type": "ALWAYS_RED", "pattern": "\\b(net asset value|NAV|book value per share)\\b", "description": "Valuation metrics"}

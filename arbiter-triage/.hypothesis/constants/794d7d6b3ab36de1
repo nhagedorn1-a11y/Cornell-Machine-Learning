@@ -1,0 +1,4 @@
+# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/pipeline.py
+# hypothesis_version: 6.151.11
+
+[0.0, 100.0, 435, 500, 1000, '; ', 'GREEN', 'RED', 'STAGE_FAILURE', 'context_elevated', 'elevated_lane', 'elevation_reason', 'entities_detected', 'entity_extraction', 'escalate_to_red', 'exposure_band', 'exposure_components', 'exposure_score', 'exposure_scoring', 'hard_rule_fired', 'lane', 'lane_override', 'matrix_evaluation', 'named_entities', 'original_intent', 'payload', 'payload_construction', 'payload_hash', 'payload_id', 'pii_types_detected', 'pipeline', 'record_write', 'redacted_fields', 'rule_engine', 'rule_id', 'rule_type', 'rules_evaluated', 'rules_fired', 'sanitized_content', 'sensitivity_band', 'sensitivity_score', 'sensitivity_scoring', 'session_context', 'token_count', 'tokenization', 'tokens', 'type']

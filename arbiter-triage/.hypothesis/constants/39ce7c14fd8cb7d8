@@ -1,0 +1,4 @@
+# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/storage/session_store.py
+# hypothesis_version: 6.151.11
+
+[0.0, 0.85, 'approved_payloads', 'decay_factor', 'entity_registry', 'lane_history', 'peak_sensitivity', 'query_count']

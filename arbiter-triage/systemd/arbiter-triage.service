@@ -1,0 +1,52 @@
+[Unit]
+Description=Arbiter Triage Engine — AI Query Policy Enforcement
+Documentation=file:///opt/arbiter/docs/triage-engine.md
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+User=arbiter-triage
+Group=arbiter-triage
+ExecStart=/opt/arbiter/venv/bin/python -m arbiter_triage.api.socket_server
+WorkingDirectory=/opt/arbiter
+
+# Restart policy
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Resource limits
+MemoryMax=12G
+MemoryHigh=10G
+CPUQuota=400%
+
+# Security hardening
+PrivateNetwork=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+
+# Filesystem access
+ReadWritePaths=/var/run/arbiter /var/lib/arbiter/triage
+ReadOnlyPaths=/opt/arbiter
+
+# Logging — no raw query content in logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=arbiter-triage
+
+# Watchdog
+WatchdogSec=30
+
+[Install]
+WantedBy=multi-user.target

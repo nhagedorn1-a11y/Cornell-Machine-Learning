@@ -1,0 +1,8 @@
+{"rule_id": "HCR_001", "type": "ALWAYS_RED", "pattern": "\\b(HIPAA|Health Insurance Portability)\\b", "description": "HIPAA regulation references"}
+{"rule_id": "HCR_002", "type": "ALWAYS_RED", "pattern": "\\b(PHI|protected health information)\\b", "description": "Protected health information markers"}
+{"rule_id": "HCR_003", "type": "ALWAYS_RED", "pattern": "\\b(patient record|patient file|patient history)\\b", "description": "Patient record references"}
+{"rule_id": "HCR_004", "type": "ALWAYS_RED", "pattern": "\\b(diagnosis|diagnostic report|clinical finding)\\b", "description": "Diagnostic information"}
+{"rule_id": "HCR_005", "type": "ALWAYS_RED", "pattern": "\\b(treatment plan|care plan|treatment protocol)\\b", "description": "Treatment planning documents"}
+{"rule_id": "HCR_006", "type": "ALWAYS_RED", "pattern": "\\b(medical record|health record|EHR|EMR)\\b", "description": "Medical record systems"}
+{"rule_id": "HCR_007", "type": "ALWAYS_RED", "pattern": "\\b(prescription|medication order|drug regimen)\\b", "description": "Prescription information"}
+{"rule_id": "HCR_008", "type": "ALWAYS_RED", "pattern": "\\b(informed consent|patient consent|consent form)\\b", "description": "Patient consent documents"}

@@ -1,0 +1,4 @@
+# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/record_writer.py
+# hypothesis_version: 6.151.11
+
+[10.0, 30.0, 1000.0, 'record_hash', 'record_id', 'record_writer']

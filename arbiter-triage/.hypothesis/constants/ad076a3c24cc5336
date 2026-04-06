@@ -1,0 +1,4 @@
+# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/payload_constructor.py
+# hypothesis_version: 6.151.11
+
+[0.0, 5.0, 10.0, 15.0, 20.0, 100.0, 117, 120, 1000, ')\\b', '...', 'EMAIL', 'GREEN', 'MNPI', 'PHONE', 'SSN', '[.!?]', '[ENTITY]', '[FIGURE]', '[REDACTED]', '[REDACTED_EMAIL]', '[REDACTED_PHONE]', '[REDACTED_SSN]', '\\b(?:', '\\s+', 'abort', 'acquisition', 'approved_at', 'approved_by', 'blackout', 'buyout', 'classified', 'confidential', 'constructed_at', 'covenant', 'earnings', 'embargo', 'escalate_to_red', 'forecast', 'guidance', 'insider', 'material non-public', 'merger', 'original', 'original_intent', 'payload', 'payload_constructor', 'payload_hash', 'payload_id', 'pre-announcement', 'projection', 'proprietary', 'redacted_fields', 'replaced_with', 'restricted list', 'sanitized_content', 'takeover', 'trade secret', 'wall crossing', '|']

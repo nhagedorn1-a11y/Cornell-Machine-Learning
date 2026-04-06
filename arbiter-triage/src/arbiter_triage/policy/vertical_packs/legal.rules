@@ -1,0 +1,8 @@
+{"rule_id": "LEG_001", "type": "ALWAYS_RED", "pattern": "\\b(litigation|pending lawsuit|legal action)\\b", "description": "Litigation indicators"}
+{"rule_id": "LEG_002", "type": "ALWAYS_RED", "pattern": "\\b(settlement agreement|settlement amount|settle claim)\\b", "description": "Settlement terms"}
+{"rule_id": "LEG_003", "type": "ALWAYS_RED", "pattern": "\\b(plaintiff|defendant|respondent)\\b", "description": "Party designations"}
+{"rule_id": "LEG_004", "type": "ALWAYS_RED", "pattern": "\\b(subpoena|court order|injunction)\\b", "description": "Legal compulsion instruments"}
+{"rule_id": "LEG_005", "type": "ALWAYS_RED", "pattern": "\\b(deposition|sworn testimony|affidavit)\\b", "description": "Testimonial evidence"}
+{"rule_id": "LEG_006", "type": "ALWAYS_RED", "pattern": "\\b(privileged communication|attorney[- ]client privilege)\\b", "description": "Privilege assertions"}
+{"rule_id": "LEG_007", "type": "ALWAYS_RED", "pattern": "\\b(class action|collective action|multi[- ]district litigation)\\b", "description": "Aggregate litigation"}
+{"rule_id": "LEG_008", "type": "ALWAYS_RED", "pattern": "\\b(consent decree|regulatory enforcement|cease and desist)\\b", "description": "Regulatory actions"}
