@@ -1,4 +1,0 @@
-# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/session_context.py
-# hypothesis_version: 6.151.11
-
-[0.85, 200, 'AMBER', 'GREEN', 'RED', 'context_elevated', 'elevated_lane', 'elevation_reason', 'session_context']

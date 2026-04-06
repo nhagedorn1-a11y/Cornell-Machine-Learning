@@ -1,4 +1,0 @@
-# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/rule_engine.py
-# hypothesis_version: 6.151.11
-
-['ALWAYS_GREEN', 'ALWAYS_RED', 'COVENANT_THRESHOLD', 'CREDIT_AGREEMENT', 'GREEN', 'MNPI_MARKER', 'PRE_APPROVED', 'PRE_APPROVED_HASH', 'RED', 'REGULATORY_FILING', '\\s+', 'hard_rule_fired', 'lane_override', 'rule_engine', 'rule_id', 'rule_type', 'rules_evaluated', 'rules_fired', 'type', 'utf-8']

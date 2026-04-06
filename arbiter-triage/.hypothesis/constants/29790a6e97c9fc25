@@ -1,4 +1,0 @@
-# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/matrix_evaluator.py
-# hypothesis_version: 6.151.11
-
-[0.0, 5.0, 100.0, 100, 1000, 'AMBER', 'CRITICAL', 'ESSENTIAL', 'GREEN', 'HIGH', 'LOW', 'MEDIUM', 'MINIMAL', 'MODERATE', 'NONE', 'RED', 'SIGNIFICANT', 'exposure_band', 'lane', 'matrix_evaluator', 'sensitivity_band']

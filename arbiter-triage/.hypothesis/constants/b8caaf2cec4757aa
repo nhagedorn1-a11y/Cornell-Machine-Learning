@@ -1,4 +1,0 @@
-# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/storage/record_store.py
-# hypothesis_version: 6.151.11
-
-[0.0, 100, 'NONE', 'RED', 'approval_actor', 'approval_timestamp', 'decision_reason', 'entities_detected', 'exposure_band', 'exposure_components', 'exposure_score', 'final_lane', 'frontier_payload_id', 'hard_rule_override', 'hard_rules_evaluated', 'hard_rules_fired', 'matrix_result', 'payload_approved', 'pii_types_detected', 'previous_record_hash', 'query_hash', 'query_id', 'query_length_tokens', 'record_hash', 'record_id', 'sensitivity_band', 'sensitivity_score', 'session_id', 'timestamp', 'user_id', 'utf-8']

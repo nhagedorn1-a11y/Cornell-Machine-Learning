@@ -1,4 +1,0 @@
-# file: /home/user/Cornell-Machine-Learning/arbiter-triage/src/arbiter_triage/stages/entity_extractor.py
-# hypothesis_version: 6.151.11
-
-[1000, 'CARDINAL', 'CONTRACT_REFERENCE', 'COUNTERPARTY_NAME', 'COVENANT_TERM', 'CREDIT_INSTRUMENT', 'EMAIL_ADDRESS', 'EVENT', 'FAC', 'FINANCIAL_FIGURE', 'GPE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PHONE_NUMBER', 'PII_', 'PII_EMAIL', 'PII_PHONE', 'PII_SSN', 'QUANTITY', 'REGULATORY_MARKER', 'US_SSN', '\\b\\d+(?:\\.\\d+)?%', 'en', 'en_core_web_lg', 'en_core_web_md', 'en_core_web_sm', 'entities_detected', 'entity_extractor', 'https?://\\S+', 'lemmatizer', 'named_entities', 'parser', 'pii_types_detected', 'type', 'value']
